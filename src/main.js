@@ -2,6 +2,7 @@ import "./style.css";
 import { categories, faqs } from "./data/supportData.js";
 import { parseRoute, setRoute } from "./support/router.js";
 import { escapeHtml, highlightHtml, scoreEntry, tokenize } from "./support/search.js";
+import nymoFaviconUrl from "./assets/Nymo_logo_white.png?url";
 
 const STORAGE_LANG = "nymo_support_lang";
 
@@ -572,6 +573,19 @@ function init() {
   window.addEventListener("hashchange", () => renderApp());
   renderShell();
   renderApp();
+
+  // Force branded favicon (avoids aggressive browser favicon cache).
+  const head = document.head || document.querySelector("head");
+  if (head) {
+    let link = head.querySelector('link[rel="icon"]');
+    if (!link) {
+      link = document.createElement("link");
+      link.setAttribute("rel", "icon");
+      head.appendChild(link);
+    }
+    link.setAttribute("type", "image/png");
+    link.setAttribute("href", nymoFaviconUrl);
+  }
 }
 
 init();
