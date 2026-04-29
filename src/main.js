@@ -297,7 +297,7 @@ function renderCategory(key) {
   main.innerHTML = `
     <section class="wrap" style="padding: 22px 0;">
       <div style="display:flex; align-items:center; gap: 10px; justify-content: space-between; flex-wrap: wrap;">
-        <a href="#/" style="color: rgba(0,0,0,0.7); text-decoration: none;">← ${escapeHtml(t.back)}</a>
+        <a href="#/" class="back-link">← ${escapeHtml(t.back)}</a>
         <div style="display:flex; align-items:center; gap: 10px;">
           <span style="color: rgba(0,0,0,0.55); font-size: 14px;">${escapeHtml(t.inCategory)}:</span>
           <strong style="font-size: 16px;">${escapeHtml(title)}</strong>
@@ -351,7 +351,7 @@ function renderQuestion(id) {
   main.innerHTML = `
     <section class="wrap" style="padding: 22px 0 40px;">
       <div style="display:flex; align-items:center; gap: 10px; justify-content: space-between; flex-wrap: wrap;">
-        <a href="#/c/${escapeHtml(f.category)}" style="color: rgba(0,0,0,0.7); text-decoration: none;">← ${escapeHtml(t.back)}</a>
+        <a href="#/c/${escapeHtml(f.category)}" class="back-link">← ${escapeHtml(t.back)}</a>
         <div style="color: rgba(0,0,0,0.55); font-size: 14px;">${escapeHtml(cat ? cat.title[state.lang] : f.category)} · #${escapeHtml(f.id)}</div>
       </div>
       <div style="height: 14px;"></div>
@@ -380,7 +380,7 @@ function renderRequest() {
   const main = document.querySelector("#main");
   main.innerHTML = `
     <section class="wrap" style="padding: 22px 0 48px;">
-      <a href="#/" style="color: rgba(0,0,0,0.7); text-decoration: none;">← ${escapeHtml(t.back)}</a>
+      <a href="#/" class="back-link">← ${escapeHtml(t.back)}</a>
       <div style="height: 12px;"></div>
       <h2 style="margin:0; font-size: 22px;">${escapeHtml(t.requestTitle)}</h2>
       <p style="margin: 10px 0 0; color: rgba(0,0,0,0.65);">${escapeHtml(t.requestHint)}</p>
