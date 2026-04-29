@@ -88,6 +88,16 @@ export const categories = [
     subtitle: { uk: "Теми, шрифти, шпалери, вигляд", en: "Themes, fonts, wallpapers, UI" }
   },
   {
+    key: "accessibility",
+    title: { uk: "Доступність", en: "Accessibility" },
+    subtitle: { uk: "Контраст, масштаб, читабельність", en: "Contrast, scale, readability" }
+  },
+  {
+    key: "data-usage",
+    title: { uk: "Трафік та дані", en: "Data usage" },
+    subtitle: { uk: "Економія трафіку, Wi‑Fi only, автозавантаження", en: "Data saver, Wi‑Fi only, auto-download" }
+  },
+  {
     key: "troubleshooting",
     title: { uk: "Проблеми та збої", en: "Troubleshooting" },
     subtitle: { uk: "Краші, лаги, помилки, мережа", en: "Crashes, lag, errors, network" }
@@ -805,6 +815,46 @@ for (const block of bulk) {
     faqs.push(faq(block.c, it.q.uk, it.q.en, it.a.uk, it.a.en, it.tags || [], 200));
   }
 }
+
+// Extra Q&A for the two "layout balancing" sections.
+faqs.push(
+  faq(
+    "accessibility",
+    "Як збільшити шрифт або масштаб інтерфейсу?",
+    "How do I increase font size or UI scale?",
+    "Перевірте системний масштаб (Display/Text size) та налаштування доступності.\n\nЯкщо у вашій збірці є “Accessibility” в налаштуваннях — увімкніть більший розмір тексту/контраст.",
+    "Check OS Display/Text size and accessibility settings.\n\nIf your build has in-app Accessibility settings, enable larger text / higher contrast there.",
+    ["accessibility", "font", "scale", "шрифт"],
+    120
+  ),
+  faq(
+    "accessibility",
+    "Керування клавіатурою на Desktop/Web",
+    "Keyboard navigation on Desktop/Web",
+    "Якщо ви на Desktop/Web, спробуйте стандартні комбінації (Tab/Shift+Tab) для переходу між елементами.\n\nЯкщо фокус “губиться” — повідомте підтримці сторінку та кроки відтворення.",
+    "On Desktop/Web, use standard keys (Tab/Shift+Tab) to move focus.\n\nIf focus gets lost, contact support with the page and reproduction steps.",
+    ["keyboard", "accessibility", "desktop", "tab"],
+    220
+  ),
+  faq(
+    "data-usage",
+    "Як вимкнути автозавантаження медіа на мобільних даних?",
+    "How do I disable auto-download on mobile data?",
+    "Налаштування → Дані/Медіа → Автозавантаження. Вимкніть для мобільних даних або оберіть “лише Wi‑Fi”.",
+    "Settings → Data/Media → Auto-download. Disable for mobile data or choose “Wi‑Fi only”.",
+    ["data saver", "auto-download", "wi-fi only", "трафік"],
+    110
+  ),
+  faq(
+    "data-usage",
+    "Чому використання трафіку таке велике?",
+    "Why is data usage so high?",
+    "Найчастіше причина — відео/фото, автозавантаження та синхронізація. Вимкніть автозавантаження, обмежте завантаження у фоні та очищайте кеш медіа за потреби.",
+    "Most often it’s photos/videos, auto-download, and sync. Disable auto-download, limit background downloads, and clear media cache when needed.",
+    ["data usage", "media", "background", "економія"],
+    240
+  )
+);
 
 // Add additional breadth with safe variations that remain true for most messengers.
 // These are written to be generally applicable without claiming specific implementation details.

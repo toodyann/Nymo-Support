@@ -36,8 +36,10 @@ body{ margin: 0; }
 .back-link:hover{ text-decoration: underline; }
 
 .wrap{
-  width: min(var(--max), calc(100% - 48px));
+  width: 100%;
+  max-width: var(--max);
   margin: 0 auto;
+  padding-inline: 24px;
 }
 
 /* Top bar + hero */
@@ -355,7 +357,7 @@ body{ margin: 0; }
 }
 
 @media (max-width: 560px){
-  .wrap{ width: calc(100% - 24px); }
+  .wrap{ padding-inline: 12px; }
   .topbar-nav{ gap: 12px; }
   .brand-sub{ display:none; }
   .cards{ grid-template-columns: 1fr; }
