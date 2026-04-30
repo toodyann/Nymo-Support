@@ -582,6 +582,30 @@ const bulk = [
           "It depends on your version. If multi-account is supported, it appears in Account settings.\n\nOtherwise you can usually only log out and log in to another account."
         ),
         tags: ["multiple accounts", "multi account", "кілька"]
+      },
+      {
+        q: p("Не приходить лист підтвердження на email", "Verification email not received"),
+        a: p(
+          "Перевірте папки “Спам/Промоакції” та правильність адреси. Спробуйте повторити відправку.\n\nЯкщо корпоративна пошта — лист може блокуватися політиками домену.",
+          "Check Spam/Promotions and that the address is correct. Try resending.\n\nOn corporate email, domain policies may block the message."
+        ),
+        tags: ["email", "verification", "spam"]
+      },
+      {
+        q: p("Як змінити мову інтерфейсу?", "How do I change app language?"),
+        a: p(
+          "Зазвичай мова береться з мови системи. Якщо в налаштуваннях є “Language/Мова” — змініть її там.\n\nПісля зміни перезапустіть застосунок, якщо потрібно.",
+          "Language is usually based on OS language. If there is a Language setting, change it there.\n\nRestart the app if required."
+        ),
+        tags: ["language", "locale", "мова"]
+      },
+      {
+        q: p("Не можу вийти з акаунту", "I can’t log out"),
+        a: p(
+          "Переконайтесь, що застосунок оновлений. Спробуйте перезапуск.\n\nЯкщо вихід заблоковано через активну синхронізацію — зачекайте кілька хвилин і повторіть.",
+          "Make sure the app is up to date. Try restarting.\n\nIf logout is blocked during sync, wait a few minutes and retry."
+        ),
+        tags: ["logout", "session", "вийти"]
       }
     ]
   },
@@ -621,6 +645,38 @@ const bulk = [
           "Duplication can happen during re-sync or on unstable connections.\n\nRefresh the chat, restart the app, and wait a few minutes. If it persists, contact support with time and chat."
         ),
         tags: ["duplicate", "sync", "дублюються"]
+      },
+      {
+        q: p("Чому не відображається “друкує…”?", "Why don’t I see “typing…”?"),
+        a: p(
+          "Індикатор може бути вимкнений приватністю або не працювати при слабкій мережі.\n\nСпробуйте оновити чат та перевірити налаштування приватності/статусів.",
+          "Typing indicator may be disabled by privacy settings or fail on weak connections.\n\nRefresh the chat and review privacy/status settings."
+        ),
+        tags: ["typing", "indicator", "друкує"]
+      },
+      {
+        q: p("Як відповісти на конкретне повідомлення (Reply)?", "How do I reply to a specific message?"),
+        a: p(
+          "Затисніть повідомлення → “Відповісти/Reply”. У полі вводу з’явиться цитата — надішліть відповідь.",
+          "Long-press the message → “Reply”. A quote preview appears in the input — send your reply."
+        ),
+        tags: ["reply", "quote", "відповісти"]
+      },
+      {
+        q: p("Як скопіювати текст повідомлення?", "How do I copy message text?"),
+        a: p(
+          "Затисніть повідомлення → “Копіювати/Copy”.\n\nНа Desktop/Web часто працюють стандартні комбінації копіювання після виділення.",
+          "Long-press the message → “Copy”.\n\nOn Desktop/Web, standard copy shortcuts often work after selecting text."
+        ),
+        tags: ["copy", "clipboard", "копіювати"]
+      },
+      {
+        q: p("Повідомлення зникають / не видно частину історії", "Messages disappear / partial history"),
+        a: p(
+          "Причини: незавершена синхронізація, очищення кешу/даних або обмеження збереження історії.\n\nПеревірте інтернет, зачекайте синк і не очищайте дані, якщо не впевнені.",
+          "Common causes: incomplete sync, clearing cache/data, or retention limits.\n\nCheck network, allow sync, and avoid clearing data unless you’re sure."
+        ),
+        tags: ["history", "missing", "sync", "історія"]
       }
     ]
   },
@@ -644,6 +700,30 @@ const bulk = [
           "Check whether the group is read-only or admins restricted member permissions.\n\nAlso confirm you weren’t removed and that your connection is stable."
         ),
         tags: ["group", "permissions", "read-only"]
+      },
+      {
+        q: p("Як змінити назву або фото групи?", "How do I change group name or photo?"),
+        a: p(
+          "Відкрийте інформацію про групу → “Редагувати/Edit”.\n\nЯкщо кнопки немає — ймовірно, у вас немає прав адміністратора.",
+          "Open group info → “Edit”.\n\nIf you don’t see it, you likely lack admin permissions."
+        ),
+        tags: ["group", "admin", "name", "photo"]
+      },
+      {
+        q: p("Як зробити когось адміном?", "How do I make someone an admin?"),
+        a: p(
+          "Список учасників → виберіть користувача → “Роль/Role” → “Адміністратор”.\n\nДоступно лише власнику або адмінам з правом керування ролями.",
+          "Members list → select user → “Role” → “Admin”.\n\nOnly owners/admins with role management can do this."
+        ),
+        tags: ["admin", "role", "permissions"]
+      },
+      {
+        q: p("Як вимкнути сповіщення групи?", "How do I mute a group?"),
+        a: p(
+          "Налаштування групи → “Тиша/Mute” → оберіть час.\n\nЯкщо сповіщення все одно приходять — перевірте системні налаштування сповіщень.",
+          "Group settings → “Mute” → choose duration.\n\nIf notifications still come through, check OS notification settings."
+        ),
+        tags: ["group", "mute", "notifications", "тиша"]
       }
     ]
   },
@@ -667,6 +747,22 @@ const bulk = [
           "Try headphones and lower speaker volume. Echo often happens when mic picks up speaker output.\n\nAlso close other apps using audio."
         ),
         tags: ["echo", "noise", "call"]
+      },
+      {
+        q: p("Мене не видно у відеодзвінку (чорний екран)", "Video call shows black screen"),
+        a: p(
+          "Перевірте доступ до камери та чи камера не зайнята іншою програмою.\n\nСпробуйте перемкнути камеру (front/back) і перезапустити дзвінок.",
+          "Check camera permission and whether another app is using it.\n\nTry switching front/back camera and restart the call."
+        ),
+        tags: ["video", "black screen", "camera"]
+      },
+      {
+        q: p("Погана якість дзвінка", "Call quality is poor"),
+        a: p(
+          "Причина найчастіше мережа. Перейдіть на Wi‑Fi або сильніший сигнал, вимкніть VPN.\n\nЗакрийте важкі застосунки у фоні.",
+          "Most often it’s network. Switch to Wi‑Fi/stronger signal and disable VPN.\n\nClose heavy background apps."
+        ),
+        tags: ["quality", "lag", "network", "якість"]
       }
     ]
   },
@@ -690,6 +786,22 @@ const bulk = [
           "Check OS notification privacy settings like “Show previews”.\n\nThe app may also have a “Hide message text in push” option."
         ),
         tags: ["preview", "privacy", "notification"]
+      },
+      {
+        q: p("Сповіщення приходять без звуку", "Notifications arrive without sound"),
+        a: p(
+          "Перевірте режим “Не турбувати”, гучність, та налаштування звуку сповіщень.\n\nДля конкретного чату/групи може бути увімкнена тиша.",
+          "Check Do Not Disturb, volume, and notification sound settings.\n\nThe specific chat/group may be muted."
+        ),
+        tags: ["sound", "silent", "mute", "звук"]
+      },
+      {
+        q: p("Чому сповіщення приходять двічі?", "Why do I get duplicate notifications?"),
+        a: p(
+          "Іноді це трапляється після переінсталяції або при активних сесіях на кількох пристроях.\n\nПеревірте сесії/пристрої та перезапустіть застосунок.",
+          "This can happen after reinstall or when multiple devices/sessions are active.\n\nCheck sessions/devices and restart the app."
+        ),
+        tags: ["duplicate", "push", "двічі"]
       }
     ]
   },
@@ -713,6 +825,22 @@ const bulk = [
           "Settings → Data/Media → Auto-download. Disable for mobile data or entirely.\n\nThis saves data and storage."
         ),
         tags: ["auto-download", "data saver", "медіа"]
+      },
+      {
+        q: p("Фото/відео відправляються дуже довго", "Photo/video uploads are very slow"),
+        a: p(
+          "Перевірте швидкість мережі та спробуйте іншу (Wi‑Fi/мобільні дані). Великі файли можуть відправлятись довше.\n\nСпробуйте відправити меншу версію або стиснути файл.",
+          "Check network speed and try another network (Wi‑Fi/mobile). Large files take longer.\n\nTry sending a smaller/compressed version."
+        ),
+        tags: ["upload", "slow", "video", "повільно"]
+      },
+      {
+        q: p("Де зберігаються завантажені файли?", "Where are downloaded files stored?"),
+        a: p(
+          "Зазвичай у сховищі застосунку/папці завантажень (залежить від ОС). Якщо є опція “Зберегти в галерею/Downloads” — використайте її.\n\nОчищення кешу може прибрати локальні копії.",
+          "Usually in app storage or Downloads folder (depends on OS). If there’s “Save to gallery/Downloads”, use it.\n\nClearing cache may remove local copies."
+        ),
+        tags: ["storage", "downloads", "files", "де"]
       }
     ]
   },
@@ -736,6 +864,22 @@ const bulk = [
           "Settings → Privacy → Blocked users → select user → “Unblock”.\n\nAfter that they can message you again (depending on platform rules)."
         ),
         tags: ["unblock", "blocked", "розблокувати"]
+      },
+      {
+        q: p("Як приховати аватар/профіль для незнайомих?", "How do I hide my avatar/profile from strangers?"),
+        a: p(
+          "Налаштування → Приватність → Видимість профілю. Обмежте перегляд аватара/даних для “Ніхто/Контакти”.\n\nДоступні опції залежать від вашої версії.",
+          "Settings → Privacy → Profile visibility. Restrict avatar/details to “Nobody/Contacts”.\n\nOptions depend on your build."
+        ),
+        tags: ["privacy", "avatar", "visibility"]
+      },
+      {
+        q: p("Чому не можу зробити скріншот у чаті?", "Why can’t I take screenshots in chat?"),
+        a: p(
+          "У деяких режимах або чатах може бути увімкнений захист від скріншотів.\n\nЦе налаштування може керуватись політиками безпеки або типом чату.",
+          "Some modes/chats may enable screenshot protection.\n\nThis can be controlled by security policies or chat type."
+        ),
+        tags: ["screenshot", "privacy", "screenshots"]
       }
     ]
   },
@@ -759,6 +903,22 @@ const bulk = [
           "It can be incomplete sync or a history retention limitation in your build.\n\nCheck internet, wait a few minutes, and restart the app."
         ),
         tags: ["history", "sync", "older messages"]
+      },
+      {
+        q: p("Синхронізація зависла на одному етапі", "Sync is stuck"),
+        a: p(
+          "Дайте синхронізації 3–5 хвилин, особливо після входу. Перевірте інтернет і вимкніть економію батареї для застосунку.\n\nЯкщо не рухається — перезапустіть застосунок.",
+          "Give sync 3–5 minutes, especially after login. Check internet and disable battery optimization.\n\nIf it doesn’t progress, restart the app."
+        ),
+        tags: ["sync", "stuck", "зависла"]
+      },
+      {
+        q: p("Чи можна експортувати чат або дані?", "Can I export chats or data?"),
+        a: p(
+          "Якщо експорт підтримується у вашій версії — він буде в Налаштуваннях даних/історії.\n\nЯкщо опції немає — зверніться у підтримку і вкажіть, що саме потрібно експортувати.",
+          "If export is supported, it appears under Data/History settings.\n\nIf there’s no option, contact support and specify what you need exported."
+        ),
+        tags: ["export", "data", "експорт"]
       }
     ]
   },

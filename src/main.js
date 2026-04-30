@@ -5,6 +5,8 @@ import { escapeHtml, highlightHtml, scoreEntry, tokenize } from "./support/searc
 import nymoFaviconUrl from "./assets/Nymo_logo_white.png?url";
 
 const STORAGE_LANG = "nymo_support_lang";
+const STORAGE_REQUEST_DRAFT = "nymo_support_request_draft_v1";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzlpezg";
 
 const categoryIconSvg = {
   "getting-started": `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z"></path></svg>`,
@@ -187,11 +189,11 @@ function renderShell() {
           <button class="help-close" value="close" aria-label="Close">✕</button>
         </div>
         <p class="help-text">${escapeHtml(i18n[state.lang].requestHint)}</p>
-        <textarea class="help-input" placeholder="${escapeHtml(
+        <textarea class="help-input" id="helpDraft" placeholder="${escapeHtml(
     state.lang === "uk" ? "Напр.: не приходять сповіщення у фоні…" : "E.g. notifications don’t arrive in background…"
   )}" required></textarea>
         <div class="help-actions">
-          <button class="help-primary" value="send">${escapeHtml(state.lang === "uk" ? "Submit" : "Submit")}</button>
+          <button class="help-primary" value="send">${escapeHtml(state.lang === "uk" ? "Продовжити" : "Continue")}</button>
           <button class="help-secondary" value="close">${escapeHtml(state.lang === "uk" ? "Close" : "Close")}</button>
         </div>
       </form>
@@ -356,7 +358,7 @@ function renderQuestion(id) {
       </div>
       <div style="height: 14px;"></div>
       <div style="border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 18px 18px;">
-        <h1 style="margin: 0; font-size: 22px; line-height: 1.25;">${highlightHtml(
+        <h1 style="margin: 0; font-size: 17px; line-height: 1.25;">${highlightHtml(
           f.q[state.lang],
           state.lastQueryForHighlight || ""
         )}</h1>
@@ -378,48 +380,179 @@ function renderQuestion(id) {
 function renderRequest() {
   const t = i18n[state.lang];
   const main = document.querySelector("#main");
+  const draft = localStorage.getItem(STORAGE_REQUEST_DRAFT) || "";
   main.innerHTML = `
     <section class="wrap" style="padding: 22px 0 48px;">
       <a href="#/" class="back-link">← ${escapeHtml(t.back)}</a>
       <div style="height: 12px;"></div>
-      <h2 style="margin:0; font-size: 22px;">${escapeHtml(t.requestTitle)}</h2>
+      <h2 style="margin:0; font-size: 17px;">${escapeHtml(t.requestTitle)}</h2>
       <p style="margin: 10px 0 0; color: rgba(0,0,0,0.65);">${escapeHtml(t.requestHint)}</p>
       <div style="height: 16px;"></div>
       <div style="border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 16px;">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div id="r_success" class="alert success" style="display:none;">
+          <div class="alert-text"></div>
+          <button class="alert-close" type="button" aria-label="Close">✕</button>
+        </div>
+        <div id="r_error" class="alert error" style="display:none;">
+          <div class="alert-text"></div>
+          <button class="alert-close" type="button" aria-label="Close">✕</button>
+        </div>
+
+        <form id="support-form" novalidate>
+          <input type="hidden" name="lang" value="${escapeHtml(state.lang)}" />
+          <input type="hidden" name="page" value="${escapeHtml(location.href)}" />
+          <input type="hidden" name="userAgent" value="${escapeHtml(navigator.userAgent)}" />
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <label style="display:flex; flex-direction:column; gap: 6px; font-size: 13px; color: rgba(0,0,0,0.7);">
             Email
-            <input id="r_email" style="border:1px solid var(--line); border-radius:10px; padding:12px; font-size: 15px;" type="email" />
+            <input id="r_email" name="email" style="border:1px solid var(--line); border-radius:10px; padding:12px; font-size: 15px;" type="email" autocomplete="email" required />
+            <span id="r_email_err" style="color: rgba(239, 68, 68, 0.9); font-size: 12px;"></span>
           </label>
           <label style="display:flex; flex-direction:column; gap: 6px; font-size: 13px; color: rgba(0,0,0,0.7);">
             ${escapeHtml(state.lang === "uk" ? "Пристрій / ОС" : "Device / OS")}
-            <input id="r_device" style="border:1px solid var(--line); border-radius:10px; padding:12px; font-size: 15px;" />
+            <input id="r_device" name="device" style="border:1px solid var(--line); border-radius:10px; padding:12px; font-size: 15px;" placeholder="${escapeHtml(
+              state.lang === "uk" ? "Напр.: iPhone 14, iOS 17.5" : "E.g. iPhone 14, iOS 17.5"
+            )}" />
+            <span id="r_device_err" style="color: rgba(239, 68, 68, 0.9); font-size: 12px;"></span>
           </label>
           <label style="display:flex; flex-direction:column; gap: 6px; font-size: 13px; color: rgba(0,0,0,0.7); grid-column: 1 / -1;">
             ${escapeHtml(state.lang === "uk" ? "Опишіть проблему" : "Describe the issue")}
-            <textarea id="r_msg" style="border:1px solid var(--line); border-radius:10px; padding:12px; font-size: 15px; min-height: 160px;"></textarea>
+            <textarea id="r_msg" name="message" style="border:1px solid var(--line); border-radius:10px; padding:12px; font-size: 15px; min-height: 160px;" required>${escapeHtml(
+              draft
+            )}</textarea>
+            <span id="r_msg_err" style="color: rgba(239, 68, 68, 0.9); font-size: 12px;"></span>
           </label>
         </div>
         <div style="height: 12px;"></div>
-        <button id="r_send" class="help-primary" type="button">${escapeHtml(
-          state.lang === "uk" ? "Підготувати лист" : "Prepare email"
+        <button class="help-primary" id="r_submit" type="submit">${escapeHtml(
+          state.lang === "uk" ? "Відправити" : "Send"
         )}</button>
+        </form>
       </div>
     </section>
   `;
 
-  const btn = document.querySelector("#r_send");
-  btn.addEventListener("click", () => {
-    const email = document.querySelector("#r_email").value || "";
-    const device = document.querySelector("#r_device").value || "";
-    const msg = document.querySelector("#r_msg").value || "";
-    const subject = state.lang === "uk" ? "Nymo підтримка: запит" : "Nymo support: request";
-    const body =
-      `${state.lang === "uk" ? "Email" : "Email"}: ${email}\n` +
-      `${state.lang === "uk" ? "Пристрій" : "Device"}: ${device}\n\n` +
-      `${state.lang === "uk" ? "Опис" : "Description"}:\n${msg}\n`;
-    const mailto = `mailto:support@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    location.href = mailto;
+  // Clear draft after we've rendered it into the form.
+  if (draft) localStorage.removeItem(STORAGE_REQUEST_DRAFT);
+
+  const form = document.querySelector("#support-form");
+  const submitBtn = document.querySelector("#r_submit");
+  const successBox = document.querySelector("#r_success");
+  const errorBox = document.querySelector("#r_error");
+  const emailErr = document.querySelector("#r_email_err");
+  const deviceErr = document.querySelector("#r_device_err");
+  const msgErr = document.querySelector("#r_msg_err");
+
+  const setBox = (el, text) => {
+    if (!el) return;
+    const textEl = el.querySelector(".alert-text");
+    const msg = String(text || "").trim();
+    if (textEl) textEl.textContent = msg;
+    el.style.display = msg ? "flex" : "none";
+  };
+
+  const clearFieldErrors = () => {
+    if (emailErr) emailErr.textContent = "";
+    if (deviceErr) deviceErr.textContent = "";
+    if (msgErr) msgErr.textContent = "";
+  };
+
+  // close buttons
+  [successBox, errorBox].forEach((box) => {
+    const btn = box?.querySelector(".alert-close");
+    if (btn) btn.addEventListener("click", () => setBox(box, ""));
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearFieldErrors();
+    setBox(errorBox, "");
+    setBox(successBox, "");
+
+    const fd = new FormData(form);
+    const email = String(fd.get("email") || "").trim();
+    const message = String(fd.get("message") || "").trim();
+
+    let hasError = false;
+    if (!email) {
+      hasError = true;
+      if (emailErr) emailErr.textContent = state.lang === "uk" ? "Вкажіть email." : "Email is required.";
+    }
+    if (!message) {
+      hasError = true;
+      if (msgErr) msgErr.textContent = state.lang === "uk" ? "Опишіть проблему." : "Message is required.";
+    }
+    if (hasError) return;
+
+    const prevLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = state.lang === "uk" ? "Відправляємо…" : "Sending…";
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: fd,
+        headers: { Accept: "application/json" }
+      });
+
+      if (res.ok) {
+        form.reset();
+        setBox(
+          successBox,
+          state.lang === "uk"
+            ? "Дякуємо! Запит відправлено. Ми відповімо на email."
+            : "Thanks! Your request was sent. We’ll reply by email."
+        );
+        return;
+      }
+
+      let data = null;
+      try {
+        data = await res.json();
+      } catch {
+        // ignore
+      }
+
+      const fallback =
+        state.lang === "uk"
+          ? "Не вдалося відправити. Спробуйте ще раз пізніше."
+          : "Failed to submit. Please try again later.";
+
+      if (data && Array.isArray(data.errors) && data.errors.length) {
+        // Example: [{field:"email", message:"..."}]
+        const fieldMsgs = {};
+        data.errors.forEach((err) => {
+          const field = String(err.field || "").trim();
+          const msg = String(err.message || "").trim();
+          if (!field) return;
+          fieldMsgs[field] = msg || fieldMsgs[field] || "";
+        });
+
+        if (fieldMsgs.email && emailErr) emailErr.textContent = fieldMsgs.email;
+        if (fieldMsgs.device && deviceErr) deviceErr.textContent = fieldMsgs.device;
+        if (fieldMsgs.message && msgErr) msgErr.textContent = fieldMsgs.message;
+
+        const formLevel = data.errors
+          .filter((x) => !x.field)
+          .map((x) => x.message)
+          .filter(Boolean)
+          .join("\n");
+        setBox(errorBox, formLevel || fallback);
+      } else {
+        setBox(errorBox, fallback);
+      }
+    } catch {
+      setBox(
+        errorBox,
+        state.lang === "uk"
+          ? "Проблема з мережею. Перевірте інтернет і спробуйте ще раз."
+          : "Network error. Check your connection and try again."
+      );
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = prevLabel;
+    }
   });
 }
 
@@ -548,6 +681,20 @@ function bindShellEvents() {
     if (typeof dlg.showModal === "function") dlg.showModal();
     else dlg.setAttribute("open", "");
   });
+
+  // If user submits draft from the dialog, forward to the request page
+  // and prefill the message.
+  const helpForm = dlg.querySelector("form");
+  const helpDraft = dlg.querySelector("#helpDraft");
+  const helpSendBtn = helpForm.querySelector('button[value="send"]');
+  if (helpForm && helpDraft && helpSendBtn) {
+    helpSendBtn.addEventListener("click", () => {
+      const text = String(helpDraft.value || "").trim();
+      if (text) localStorage.setItem(STORAGE_REQUEST_DRAFT, text);
+      if (typeof dlg.close === "function") dlg.close();
+      go({ name: "request" }, { clearSearch: true });
+    });
+  }
 }
 
 function renderApp() {
