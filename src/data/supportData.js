@@ -606,6 +606,22 @@ const bulk = [
           "Make sure the app is up to date. Try restarting.\n\nIf logout is blocked during sync, wait a few minutes and retry."
         ),
         tags: ["logout", "session", "вийти"]
+      },
+      {
+        q: p("Як увімкнути двофакторну перевірку (2FA)?", "How do I enable two-factor authentication (2FA)?"),
+        a: p(
+          "Якщо 2FA доступна у вашій версії: Налаштування → Безпека → Двофакторна перевірка. Дотримуйтесь кроків і збережіть резервні коди в надійному місці.\n\nЯкщо опції немає — функція може бути ще не увімкнена у вашій збірці.",
+          "If 2FA is available: Settings → Security → Two-factor authentication. Follow the steps and store backup codes safely.\n\nIf you don’t see it, your build may not support it yet."
+        ),
+        tags: ["2fa", "security", "двофакторна"]
+      },
+      {
+        q: p("Забув доступ / не можу скинути вхід", "I lost access / can’t reset login"),
+        a: p(
+          "Спробуйте стандартне відновлення через email/телефон у екрані входу. Перевірте спам і правильність даних.\n\nЯкщо акаунт скомпрометовано — завершіть сторонні сесії в налаштуваннях безпеки і зверніться у підтримку з часом події.",
+          "Try the standard recovery flow on the sign-in screen. Check spam and that your details are correct.\n\nIf the account is compromised, end unknown sessions in security settings and contact support with timing details."
+        ),
+        tags: ["recovery", "reset", "access", "відновлення"]
       }
     ]
   },
@@ -677,6 +693,22 @@ const bulk = [
           "Common causes: incomplete sync, clearing cache/data, or retention limits.\n\nCheck network, allow sync, and avoid clearing data unless you’re sure."
         ),
         tags: ["history", "missing", "sync", "історія"]
+      },
+      {
+        q: p("Як позначити чат як непрочитаний?", "How do I mark a chat as unread?"),
+        a: p(
+          "Якщо доступно: затисніть чат у списку → “Позначити непрочитаним/Mark unread”.\n\nЦе лише локальна мітка для вас і не змінює статуси у співрозмовника.",
+          "If available: long-press the chat in the list → “Mark unread”.\n\nThis is a local marker for you and doesn’t change the other person’s statuses."
+        ),
+        tags: ["unread", "mark", "чат"]
+      },
+      {
+        q: p("Чи бачать інші, що я друкую?", "Can others see that I’m typing?"),
+        a: p(
+          "Зазвичай індикатор “друкує…” видно в активному чаті, якщо це не вимкнено приватністю.\n\nПеревірте Налаштування → Приватність/Статуси, якщо хочете обмежити такі індикатори.",
+          "Usually others see a typing indicator in an active chat unless privacy disables it.\n\nCheck Settings → Privacy/Status if you want to limit these indicators."
+        ),
+        tags: ["typing", "privacy", "indicator", "друкує"]
       }
     ]
   },
@@ -724,6 +756,22 @@ const bulk = [
           "Group settings → “Mute” → choose duration.\n\nIf notifications still come through, check OS notification settings."
         ),
         tags: ["group", "mute", "notifications", "тиша"]
+      },
+      {
+        q: p("У чому різниця між групою і каналом?", "What’s the difference between a group and a channel?"),
+        a: p(
+          "Група зазвичай для діалогу між учасниками з двостороннім спілкуванням. Канал частіше односторонній або з обмеженим постингом (як оголошення).\n\nТочні правила залежать від вашої версії та налаштувань адмінів.",
+          "Groups are typically multi-party chats with broader messaging. Channels are often broadcast-style with limited posting.\n\nExact rules depend on your version and admin settings."
+        ),
+        tags: ["group", "channel", "канал", "різниця"]
+      },
+      {
+        q: p("Як вийти з групи?", "How do I leave a group?"),
+        a: p(
+          "Інформація про групу → “Вийти з групи/Leave”.\n\nЯкщо кнопки немає — можливо, це канал з іншими правилами або вас зобов’язали лишитись політикою (рідко).",
+          "Group info → “Leave group”.\n\nIf you don’t see it, it may be a channel with different rules or an admin policy edge case."
+        ),
+        tags: ["leave", "exit", "група", "вийти"]
       }
     ]
   },
@@ -763,6 +811,22 @@ const bulk = [
           "Most often it’s network. Switch to Wi‑Fi/stronger signal and disable VPN.\n\nClose heavy background apps."
         ),
         tags: ["quality", "lag", "network", "якість"]
+      },
+      {
+        q: p("Як увімкнути гучний зв’язок (speaker) у дзвінку?", "How do I turn on speakerphone in a call?"),
+        a: p(
+          "Під час дзвінка натисніть іконку динаміка/Speaker.\n\nЯкщо звук йде в Bluetooth-пристрій — перемкніть аудіовихід у меню дзвінка або вимкніть Bluetooth-гарнітуру.",
+          "During a call, tap the Speaker icon.\n\nIf audio routes to Bluetooth, switch the audio output in the call menu or disconnect the headset."
+        ),
+        tags: ["speaker", "audio", "bluetooth", "динамік"]
+      },
+      {
+        q: p("Чи можна записувати дзвінок?", "Can I record a call?"),
+        a: p(
+          "Запис дзвінків залежить від законодавства вашої країни та можливостей застосунку. Якщо запису немає в інтерфейсі — швидше за все функція недоступна або заборонена політиками.\n\nНе записуйте розмови без згоди, якщо це вимагає закон.",
+          "Call recording depends on local laws and app capabilities. If there’s no recording option, it’s likely unavailable or restricted.\n\nDon’t record without consent where required by law."
+        ),
+        tags: ["record", "recording", "law", "запис"]
       }
     ]
   },
@@ -802,6 +866,22 @@ const bulk = [
           "This can happen after reinstall or when multiple devices/sessions are active.\n\nCheck sessions/devices and restart the app."
         ),
         tags: ["duplicate", "push", "двічі"]
+      },
+      {
+        q: p("Нічний режим сповіщень / тихі години", "Quiet hours / night mode for notifications"),
+        a: p(
+          "Перевірте системний “Розклад/Focus/Не турбувати” та налаштування тихих годин у застосунку (якщо є).\n\nОкремо переконайтесь, що конкретні чати не в режимі тиші назавжди.",
+          "Check OS Focus/Do Not Disturb schedules and in-app quiet hours (if available).\n\nAlso confirm specific chats aren’t permanently muted."
+        ),
+        tags: ["quiet", "night", "dnd", "ніч"]
+      },
+      {
+        q: p("На іконці застосунку не зникає “крапка” непрочитаного", "App badge won’t clear"),
+        a: p(
+          "Відкрийте чати з непрочитаними та прогорніть список. Іноді “зависає” лічильник через незавершену синхронізацію.\n\nПерезапустіть застосунок і перевірте системні налаштування badge для Nymo.",
+          "Open unread chats and scroll the list. Badges can stick if sync hasn’t finished.\n\nRestart the app and check OS badge settings for Nymo."
+        ),
+        tags: ["badge", "unread", "icon", "крапка"]
       }
     ]
   },
@@ -841,6 +921,22 @@ const bulk = [
           "Usually in app storage or Downloads folder (depends on OS). If there’s “Save to gallery/Downloads”, use it.\n\nClearing cache may remove local copies."
         ),
         tags: ["storage", "downloads", "files", "де"]
+      },
+      {
+        q: p("HEIC/HEIF фото не відкривається", "HEIC/HEIF photos won’t open"),
+        a: p(
+          "На деяких пристроях потрібен конвертер або оновлення галереї/переглядача. Спробуйте зберегти як JPEG у джерелі або відкрити іншою програмою.\n\nЯкщо відправка з iPhone — перевірте налаштування камери “Найбільш сумісні”.",
+          "Some devices need a viewer update or conversion. Try exporting as JPEG or opening with another app.\n\nOn iPhone cameras, check “Most Compatible” formats if sharing is the issue."
+        ),
+        tags: ["heic", "heif", "photo", "формат"]
+      },
+      {
+        q: p("PDF у чаті не показує превʼю", "PDF preview doesn’t show in chat"),
+        a: p(
+          "Переконайтесь, що файл повністю завантажився і що на пристрої є програма для PDF.\n\nСпробуйте відкрити файл зовні (Share/Open in) або перезавантажити чат.",
+          "Ensure the file finished downloading and you have a PDF viewer.\n\nTry opening externally (Open in) or refresh the chat."
+        ),
+        tags: ["pdf", "preview", "document", "файл"]
       }
     ]
   },
@@ -880,6 +976,22 @@ const bulk = [
           "Some modes/chats may enable screenshot protection.\n\nThis can be controlled by security policies or chat type."
         ),
         tags: ["screenshot", "privacy", "screenshots"]
+      },
+      {
+        q: p("Підозрілий лінк у повідомленні: що робити?", "Suspicious link in a message: what to do?"),
+        a: p(
+          "Не переходьте за посиланням і не вводьте паролі. Заблокуйте відправника або поскаржтесь через “Report”.\n\nЯкщо ви вже відкрили посилання — змініть пароль акаунту (якщо вводили дані) і завершіть сторонні сесії.",
+          "Don’t open the link or enter passwords. Block the sender or use “Report”.\n\nIf you already entered credentials, change your password and end unknown sessions."
+        ),
+        tags: ["phishing", "link", "security", "шахрайство"]
+      },
+      {
+        q: p("Як обмежити, хто може додавати мене в групи?", "How do I limit who can add me to groups?"),
+        a: p(
+          "Налаштування → Приватність → Групи/Запрошення. Оберіть “лише контакти” або схожу опцію, якщо вона є.\n\nЯкщо опції немає — використовуйте блокування спаму та скарги.",
+          "Settings → Privacy → Groups/Invites. Choose “contacts only” or similar if available.\n\nIf not available, rely on blocking and reporting spam invites."
+        ),
+        tags: ["groups", "invite", "privacy", "групи"]
       }
     ]
   },
@@ -919,6 +1031,22 @@ const bulk = [
           "If export is supported, it appears under Data/History settings.\n\nIf there’s no option, contact support and specify what you need exported."
         ),
         tags: ["export", "data", "експорт"]
+      },
+      {
+        q: p("Чи можна бути залогіненим на двох телефонах одночасно?", "Can I stay signed in on two phones?"),
+        a: p(
+          "Зазвичай так: один акаунт може бути активний на кількох пристроях, але синхронізація може зайняти час.\n\nЯкщо один пристрій “викидає” сесію — перевірте налаштування безпеки та список активних сесій.",
+          "Usually yes: one account can be active on multiple devices, but sync may take time.\n\nIf a device gets signed out, review security settings and active sessions."
+        ),
+        tags: ["multi-device", "sessions", "two phones", "пристрої"]
+      },
+      {
+        q: p("Втратив телефон: як захистити акаунт?", "Lost phone: how do I secure my account?"),
+        a: p(
+          "З іншого пристрою увійдіть у акаунт (якщо можливо) і завершіть усі сесії. Увімкніть 2FA, якщо доступно.\n\nТакож зверніться до оператора щодо SIM і змініть паролі на важливих сервісах, якщо були ризики.",
+          "From another device, sign in (if possible) and end all sessions. Enable 2FA if available.\n\nContact your carrier about the SIM and update passwords on critical services if needed."
+        ),
+        tags: ["lost phone", "security", "sessions", "телефон"]
       }
     ]
   },
@@ -942,6 +1070,22 @@ const bulk = [
           "Updates may affect cache/data. Restart the app and allow sync to complete.\n\nIf it persists, describe what changed after the update and contact support."
         ),
         tags: ["update", "bug", "after update"]
+      },
+      {
+        q: p("Застосунок дуже гальмує / лаги в списку чатів", "The app is laggy / chat list stutters"),
+        a: p(
+          "Очистіть кеш медіа, перевірте вільне місце на диску та закрийте важкі застосунки у фоні.\n\nЯкщо лаги після великого чату — спробуйте пошук/архівування старих чатів (якщо доступно).",
+          "Clear media cache, check free storage, and close heavy background apps.\n\nIf a huge chat causes lag, try search/archiving options if available."
+        ),
+        tags: ["lag", "performance", "slow", "лаги"]
+      },
+      {
+        q: p("Не вдається оновити застосунок з магазину", "Can’t update the app from the store"),
+        a: p(
+          "Перевірте вільне місце, мережу та обліковий запис магазину додатків. Спробуйте перезапуск магазину/пристрою.\n\nЯкщо оновлення “зависло” — видаліть оновлення в очікуванні (Android) або перевірте обмеження батьківського контролю.",
+          "Check storage, network, and your app store account. Restart the store/device.\n\nIf an update is stuck, clear pending updates (Android) or review parental/screen-time restrictions."
+        ),
+        tags: ["update", "store", "install", "оновлення"]
       }
     ]
   },
@@ -965,6 +1109,379 @@ const bulk = [
           "Submit a request and include your account, what you need (deletion/export), and your country/jurisdiction.\n\nWe’ll respond according to policies and applicable laws."
         ),
         tags: ["privacy", "export", "delete data"]
+      },
+      {
+        q: p("Мінімальний вік та правила використання", "Minimum age and acceptable use"),
+        a: p(
+          "Умови залежать від вашої країни та політик сервісу. Якщо потрібна допомога з акаунтом неповнолітнього — зверніться через “Submit a request” і вкажіть юрисдикцію.",
+          "Rules depend on your country and service policies. For underage account questions, submit a request with your jurisdiction."
+        ),
+        tags: ["age", "terms", "minor", "вік"]
+      },
+      {
+        q: p("Апеляція щодо обмеження акаунта", "Appeal an account restriction"),
+        a: p(
+          "Надішліть запит через “Submit a request”: акаунт, дата, короткий опис. Рішення приймається згідно з правилами платформи.\n\nДеталі можуть бути обмежені з міркувань безпеки та приватності.",
+          "Submit a request with account, date, and a short explanation. Decisions follow platform rules.\n\nDetails may be limited for safety and privacy reasons."
+        ),
+        tags: ["appeal", "ban", "moderation", "апеляція"]
+      }
+    ]
+  },
+
+  // Getting started (bulk)
+  {
+    c: "getting-started",
+    items: [
+      {
+        q: p("Як оновити Nymo до останньої версії?", "How do I update Nymo to the latest version?"),
+        a: p(
+          "Відкрийте магазин додатків вашої платформи → сторінка Nymo → “Оновити/Update”.\n\nЯкщо кнопки немає — у вас уже остання версія або оновлення тимчасово недоступне в регіоні.",
+          "Open your platform app store → Nymo → “Update”.\n\nIf there’s no button, you’re on the latest version or updates are temporarily unavailable in your region."
+        ),
+        tags: ["update", "install", "store", "оновлення"]
+      },
+      {
+        q: p("Чи підтримується моя ОС / модель пристрою?", "Is my OS / device supported?"),
+        a: p(
+          "Nymo розрахований на сучасні версії ОС. Якщо встановлення недоступне — пристрій або версія системи можуть бути нижче мінімальних вимог.\n\nОновіть ОС або використайте підтримуваний пристрій.",
+          "Nymo targets recent OS versions. If install isn’t available, your OS/device may be below minimum requirements.\n\nUpdate the OS or use a supported device."
+        ),
+        tags: ["compatibility", "os", "device", "підтримка"]
+      },
+      {
+        q: p("Перший запуск: що зробити після встановлення?", "First launch: what to do after installing?"),
+        a: p(
+          "Увімкніть потрібні дозволи (сповіщення, контакти за потреби), увійдіть у акаунт і дочекайтесь початкової синхронізації.\n\nЯкщо імпорт контактів не потрібен — його можна вимкнути в налаштуваннях приватності.",
+          "Grant needed permissions (notifications/contacts if desired), sign in, and wait for initial sync.\n\nIf you don’t want contact import, disable it in privacy settings."
+        ),
+        tags: ["setup", "first run", "permissions", "старт"]
+      },
+      {
+        q: p("Де знайти політику конфіденційності та умови?", "Where are privacy policy and terms?"),
+        a: p(
+          "Зазвичай посилання є на сайті продукту або в Налаштуваннях → Про застосунок / Юридичне.\n\nЯкщо не знаходите — напишіть у підтримку через “Submit a request”.",
+          "Links are usually on the product website or under Settings → About / Legal.\n\nIf you can’t find them, contact support via “Submit a request”."
+        ),
+        tags: ["legal", "privacy", "terms", "політика"]
+      }
+    ]
+  },
+
+  // Profile & settings (bulk)
+  {
+    c: "profile-settings",
+    items: [
+      {
+        q: p("Як змінити @username або публічне посилання?", "How do I change @username or public link?"),
+        a: p(
+          "Налаштування → Профіль → Ім’я користувача/Username. Якщо ім’я зайняте — оберіть інше.\n\nЧастота змін може бути обмежена анти-зловживальними правилами.",
+          "Settings → Profile → Username. If taken, pick another.\n\nChange frequency may be limited by anti-abuse rules."
+        ),
+        tags: ["username", "handle", "посилання", "нік"]
+      },
+      {
+        q: p("Де змінити номер телефону або email у профілі?", "Where do I change phone or email on my profile?"),
+        a: p(
+          "Налаштування → Акаунт/Безпека → “Змінити телефон/Email”. Після зміни зазвичай потрібна перевірка кодом.\n\nЯкщо старий номер недоступний — використайте відновлення або підтримку.",
+          "Settings → Account/Security → “Change phone/email”. Verification is usually required.\n\nIf you lost the old number, use recovery or support."
+        ),
+        tags: ["phone", "email", "account", "зміна"]
+      },
+      {
+        q: p("Як приховати номер або email у профілі для інших?", "How do I hide phone/email on my profile?"),
+        a: p(
+          "Налаштування → Приватність → Видимість профілю/Контактні дані. Обмежте показ для незнайомих або лишіть лише для контактів.\n\nДоступні опції залежать від версії.",
+          "Settings → Privacy → Profile visibility/Contact info. Restrict what strangers can see.\n\nOptions depend on your build."
+        ),
+        tags: ["privacy", "profile", "phone", "приховати"]
+      },
+      {
+        q: p("Як увімкнути або вимкнути автозавантаження фото профілю в повній якості?", "High-quality profile photo loading"),
+        a: p(
+          "Перевірте Налаштування → Дані/Медіа. На мобільних даних можна зменшити якість прев’ю для економії трафіку.\n\nПовне фото часто підвантажується після відкриття профілю.",
+          "Check Settings → Data/Media. On mobile data you can reduce preview quality to save bandwidth.\n\nFull photos often load after opening the profile."
+        ),
+        tags: ["avatar", "data", "media", "фото"]
+      }
+    ]
+  },
+
+  // Contacts (bulk)
+  {
+    c: "contacts",
+    items: [
+      {
+        q: p("Як додати контакт вручну?", "How do I add a contact manually?"),
+        a: p(
+          "Створіть контакт у системній книзі контактів з номером/емейлом, потім оновіть синхронізацію в Nymo.\n\nАбо почніть чат через пошук за ідентифікатором, якщо така функція є.",
+          "Add the person in your OS contacts with phone/email, then refresh sync in Nymo.\n\nOr start a chat via search by identifier if supported."
+        ),
+        tags: ["add contact", "manual", "контакт"]
+      },
+      {
+        q: p("Чому я не можу написати людині з книги контактів?", "Why can’t I message someone from my contacts?"),
+        a: p(
+          "Можливо, людина ще не зареєстрована в Nymo або у неї інший ідентифікатор. Перевірте номер/емейл.\n\nТакож переконайтесь, що вас не заблоковано і що немає обмежень приватності.",
+          "They may not be on Nymo yet or use a different identifier. Verify phone/email.\n\nAlso check you aren’t blocked and privacy rules allow messaging."
+        ),
+        tags: ["contacts", "message", "not found", "немає"]
+      },
+      {
+        q: p("Як тимчасово вимкнути синхронізацію контактів?", "How do I disable contact sync temporarily?"),
+        a: p(
+          "Налаштування → Приватність/Контакти → вимкніть синхронізацію. Після ввімкнення може знадобитися повторний дозвіл ОС.\n\nЛокальні чати не зникають, але нові збіги можуть не з’являтись.",
+          "Settings → Privacy/Contacts → disable sync. Re-enabling may require OS permission again.\n\nExisting chats remain, but new matches may not appear."
+        ),
+        tags: ["sync", "contacts", "privacy", "вимкнути"]
+      }
+    ]
+  },
+
+  // Search (bulk)
+  {
+    c: "search",
+    items: [
+      {
+        q: p("Як шукати одразу по всіх чатах?", "How do I search across all chats?"),
+        a: p(
+          "Відкрийте глобальний пошук у верхній частині списку чатів (лупа) і введіть запит.\n\nЯкщо результатів мало — скоротіть фразу або спробуйте інше слово.",
+          "Open global search from the chat list (magnifier) and type your query.\n\nIf results are sparse, shorten the phrase or try another keyword."
+        ),
+        tags: ["global search", "chats", "пошук"]
+      },
+      {
+        q: p("Чи можна знайти повідомлення за датою?", "Can I find messages by date?"),
+        a: p(
+          "Якщо у вашій версії є фільтр дати в пошуку — використайте його.\n\nІнакше спробуйте унікальне слово з того дня або прокрутіть історію вручну.",
+          "If your build has a date filter in search, use it.\n\nOtherwise try a unique keyword from that day or scroll history manually."
+        ),
+        tags: ["search", "date", "history", "дата"]
+      },
+      {
+        q: p("Пошук не знаходить файл або посилання", "Search can’t find a file or link"),
+        a: p(
+          "Не всі вкладення індексуються миттєво. Спробуйте пошук за ім’ям файлу або частиною URL.\n\nЯкщо файл старий — дочекайтесь синхронізації або відкрийте медіа-галерею чату (якщо є).",
+          "Not all attachments are indexed immediately. Try the filename or part of the URL.\n\nFor older items, wait for sync or open the chat media gallery if available."
+        ),
+        tags: ["search", "file", "link", "вкладення"]
+      }
+    ]
+  },
+
+  // Voice messages (bulk)
+  {
+    c: "voice-messages",
+    items: [
+      {
+        q: p("Як скасувати запис голосового до відправки?", "How do I cancel a voice recording before sending?"),
+        a: p(
+          "Перетягніть палець від кнопки запису в сторону “скасувати” або відпустіть поза зоною запису — залежить від платформи.\n\nЯкщо вже відправили — видаліть повідомлення для себе або для всіх (якщо доступно).",
+          "Swipe away from the record button to cancel or release outside the record area—varies by platform.\n\nIf already sent, delete for yourself or everyone if supported."
+        ),
+        tags: ["voice", "cancel", "record", "скасувати"]
+      },
+      {
+        q: p("Чи можна пришвидшити відтворення голосового?", "Can I speed up voice playback?"),
+        a: p(
+          "Якщо у плеєрі є “1.5x/2x” — увімкніть прискорення.\n\nЯкщо опції немає — функція може бути недоступна у вашій версії.",
+          "If the player offers 1.5x/2x, enable it.\n\nIf not, your build may not support speed controls."
+        ),
+        tags: ["voice", "speed", "playback", "швидкість"]
+      },
+      {
+        q: p("Голосове обривається або “стрибає” прогрес", "Voice message skips or progress jumps"),
+        a: p(
+          "Перевірте мережу та дочекайтесь повного завантаження перед програванням.\n\nЯкщо файл пошкоджений — попросіть переслати запис ще раз.",
+          "Check network and wait for the file to finish downloading before playing.\n\nIf the file is corrupted, ask the sender to resend."
+        ),
+        tags: ["voice", "network", "corrupt", "обриви"]
+      }
+    ]
+  },
+
+  // Stickers & emoji (bulk)
+  {
+    c: "stickers-emoji",
+    items: [
+      {
+        q: p("Як додати новий пак стікерів?", "How do I add a new sticker pack?"),
+        a: p(
+          "Відкрийте панель стікерів → “Магазин/Додати” (якщо є) або перейдіть за посиланням на набір.\n\nПісля додавання набір з’явиться у вашій бібліотеці.",
+          "Open the sticker panel → “Add/Store” (if available) or follow a sticker pack link.\n\nAfter adding, it appears in your library."
+        ),
+        tags: ["stickers", "pack", "add", "стікери"]
+      },
+      {
+        q: p("Як прибрати стікерпак зі списку?", "How do I remove a sticker pack?"),
+        a: p(
+          "У бібліотеці стікерів відкрийте набір → “Видалити/Remove”.\n\nЯкщо кнопки немає — можливо, набір системний і не видаляється.",
+          "In your sticker library, open the pack → “Remove”.\n\nIf there’s no option, it may be a built-in pack that can’t be removed."
+        ),
+        tags: ["stickers", "remove", "delete", "видалити"]
+      },
+      {
+        q: p("Чому не знімається реакція з повідомлення?", "Why can’t I remove a reaction?"),
+        a: p(
+          "Торкніться тієї ж реакції ще раз, щоб перемкнути її.\n\nЯкщо не виходить — оновіть застосунок: могла бути помилка інтерфейсу.",
+          "Tap the same reaction again to toggle it off.\n\nIf it fails, update the app—could be a UI bug."
+        ),
+        tags: ["reaction", "emoji", "toggle", "реакція"]
+      }
+    ]
+  },
+
+  // Storage (bulk)
+  {
+    c: "storage",
+    items: [
+      {
+        q: p("Як подивитись, скільки місця займає кожен чат?", "How do I see storage per chat?"),
+        a: p(
+          "Якщо у вашій версії є “Сховище чату/Chat storage” — відкрийте інформацію про чат і перегляньте розбивку.\n\nЯкщо опції немає — використовуйте загальне очищення кешу медіа.",
+          "If “chat storage” exists, open chat info to see a breakdown.\n\nOtherwise use global media cache clearing."
+        ),
+        tags: ["storage", "chat", "usage", "місце"]
+      },
+      {
+        q: p("Чи можна очистити медіа, не втрачаючи історію повідомлень?", "Clear media without losing message history?"),
+        a: p(
+          "Так: очистіть кеш медіа в Налаштуваннях → Дані/Сховище. Текстові повідомлення зазвичай лишаються, але прев’ю можуть завантажитись знову.\n\nНе натискайте “очистити дані застосунку”, якщо не готові до повторного входу.",
+          "Yes: clear media cache under Settings → Data/Storage. Text usually remains, but previews may re-download.\n\nAvoid “clear app data” unless you’re ready to sign in again."
+        ),
+        tags: ["cache", "media", "history", "очистити"]
+      },
+      {
+        q: p("Як зменшити розмір локальних завантажень?", "How do I reduce local downloads?"),
+        a: p(
+          "Вимкніть автозавантаження медіа на мобільних даних, обмежте автозавантаження відео та періодично очищайте кеш.\n\nВидаліть зайві стікерпаки та збережені файли вручну.",
+          "Disable auto-download on mobile data, limit video auto-download, and clear cache periodically.\n\nRemove unused sticker packs and manually delete saved files."
+        ),
+        tags: ["downloads", "cache", "data saver", "економія"]
+      }
+    ]
+  },
+
+  // Desktop / Web (bulk)
+  {
+    c: "desktop-web",
+    items: [
+      {
+        q: p("Чи можна увійти на комп’ютері через QR-код?", "Can I log in on desktop via QR code?"),
+        a: p(
+          "Якщо у вашій збірці є вхід через QR: Desktop/Web покаже код, а телефон підтвердить сесію.\n\nЯкщо опції немає — використовуйте звичайний вхід логіном.",
+          "If QR login exists, desktop shows a code and your phone confirms the session.\n\nIf not, use standard sign-in."
+        ),
+        tags: ["qr", "desktop", "login", "вхід"]
+      },
+      {
+        q: p("Чи безпечно лишати сесію на робочому ПК?", "Is it safe to stay signed in on a shared PC?"),
+        a: p(
+          "На спільному комп’ютері краще виходити з акаунта після роботи та не зберігати паролі в браузері.\n\nВикористовуйте окремий профіль браузера або режим “приватний”.",
+          "On shared computers, sign out after use and don’t save passwords in the browser.\n\nUse a separate browser profile or private mode."
+        ),
+        tags: ["security", "desktop", "shared pc", "сесія"]
+      },
+      {
+        q: p("Як завершити всі веб-сесії?", "How do I end all web sessions?"),
+        a: p(
+          "Налаштування → Безпека → Сесії → завершіть сесії Web/Desktop.\n\nПісля цього на ПК знадобиться повторний вхід.",
+          "Settings → Security → Sessions → terminate Web/Desktop sessions.\n\nYou’ll need to sign in again on desktop."
+        ),
+        tags: ["sessions", "web", "logout", "сесії"]
+      }
+    ]
+  },
+
+  // Personalization (bulk)
+  {
+    c: "personalization",
+    items: [
+      {
+        q: p("Чи можна змінити шпалеру чату?", "Can I change chat wallpaper?"),
+        a: p(
+          "Якщо функція є: Налаштування → Персоналізація/Чат → Шпалера.\n\nЯкщо опції немає — у вашій версії це може бути недоступно.",
+          "If supported: Settings → Personalization/Chat → Wallpaper.\n\nIf missing, your build may not include it."
+        ),
+        tags: ["wallpaper", "theme", "chat", "шпалера"]
+      },
+      {
+        q: p("Як змінити звук сповіщень?", "How do I change notification sounds?"),
+        a: p(
+          "Системні звуки налаштовуються в ОС. У застосунку перевірте Налаштування → Сповіщення → звук (якщо є).\n\nДля окремих чатів може бути свій звук.",
+          "OS controls default sounds; check Settings → Notifications in the app if it offers tones.\n\nSome chats may allow custom sounds."
+        ),
+        tags: ["sound", "notifications", "tone", "звук"]
+      },
+      {
+        q: p("Як зменшити анімації для комфорту або батареї?", "Reduce animations for comfort or battery"),
+        a: p(
+          "Перевірте Налаштування → Персоналізація/Accessibility → “Зменшити рух/Reduce motion”.\n\nТакож зменшіть системні анімації в налаштуваннях ОС.",
+          "Check Settings → Personalization/Accessibility → “Reduce motion”.\n\nAlso reduce system animation settings on the OS."
+        ),
+        tags: ["motion", "battery", "accessibility", "анімації"]
+      }
+    ]
+  },
+
+  // Accessibility (bulk)
+  {
+    c: "accessibility",
+    items: [
+      {
+        q: p("Як увімкнути високий контраст або збільшити текст?", "High contrast or larger text"),
+        a: p(
+          "Поєднайте системні налаштування доступності (Display/Text size) з опціями в застосунку, якщо вони є.\n\nДеякі екрани масштабуються лише через ОС.",
+          "Combine OS accessibility (Display/Text size) with in-app options if present.\n\nSome screens only scale via the OS."
+        ),
+        tags: ["contrast", "text size", "a11y", "контраст"]
+      },
+      {
+        q: p("Чи підтримується TalkBack / VoiceOver?", "TalkBack / VoiceOver support"),
+        a: p(
+          "Увімкніть екранний читач у системі і перевірте навігацію по інтерфейсу.\n\nЯкщо фокус “ламається” на конкретному екрані — надішліть у підтримку назву екрана і кроки.",
+          "Enable the OS screen reader and navigate the UI.\n\nIf focus breaks on a specific screen, report the screen name and steps."
+        ),
+        tags: ["voiceover", "talkback", "screen reader", "озвучка"]
+      },
+      {
+        q: p("Як диктувати повідомлення голосом?", "How do I dictate messages?"),
+        a: p(
+          "На клавіатурі ОС натисніть кнопку мікрофона (якщо є) або використайте голосовий ввід системи.\n\nУ самому Nymo може бути окрема кнопка диктування — залежить від версії.",
+          "Use the OS keyboard microphone or system dictation.\n\nNymo may also offer an in-app dictation button depending on version."
+        ),
+        tags: ["dictation", "voice input", "keyboard", "диктування"]
+      }
+    ]
+  },
+
+  // Data usage (bulk)
+  {
+    c: "data-usage",
+    items: [
+      {
+        q: p("Як увімкнути режим “лише Wi‑Fi” для медіа?", "Wi‑Fi only mode for media"),
+        a: p(
+          "Налаштування → Дані/Медіа → Автозавантаження → “Лише Wi‑Fi”.\n\nТакож вимкніть автозавантаження відео у мобільній мережі.",
+          "Settings → Data/Media → Auto-download → “Wi‑Fi only”.\n\nAlso disable video auto-download on cellular."
+        ),
+        tags: ["wi-fi only", "data saver", "media", "трафік"]
+      },
+      {
+        q: p("Чому дзвінки “з’їдають” багато трафіку?", "Why do calls use a lot of data?"),
+        a: p(
+          "Відео споживає значно більше за аудіо. У слабкій мережі застосунок може підвищувати бітрейт або робити повторні спроби.\n\nЗа можливості використовуйте аудіодзвінок або Wi‑Fi.",
+          "Video uses far more data than audio. On weak networks, retries and bitrate can increase usage.\n\nPrefer audio calls or Wi‑Fi when possible."
+        ),
+        tags: ["calls", "video", "data", "трафік"]
+      },
+      {
+        q: p("Як обмежити фонове завантаження?", "Limit background downloads"),
+        a: p(
+          "Вимкніть автозавантаження, обмежте синхронізацію великих чатів і додайте застосунок у винятки батареї лише якщо це потрібно для push.\n\nПеревірте, що VPN не змушує повторно качати медіа.",
+          "Disable auto-download, limit heavy chat sync, and only exempt the app from battery saving if needed for push.\n\nCheck whether VPN causes media to re-download."
+        ),
+        tags: ["background", "downloads", "battery", "фон"]
       }
     ]
   }
