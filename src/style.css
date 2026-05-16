@@ -287,7 +287,46 @@ body{ margin: 0; }
   color: rgba(0,0,0,0.65);
   font-size: 13px;
 }
+.footer-left{
+  display:flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
 .footer-brand{ color: rgba(0,0,0,0.72); }
+.footer-authors{
+  color: rgba(0,0,0,0.52);
+  font-size: 12px;
+  line-height: 1.35;
+}
+.footer-right{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.footer-github{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  color: rgba(0,0,0,0.72);
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.footer-github:hover{
+  background: rgba(0,0,0,0.05);
+  color: rgba(0,0,0,0.88);
+}
+.footer-github:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.22);
+  outline-offset: 2px;
+}
+.footer-github svg{ display:block; }
 .footer-mid{
   display:flex;
   align-items:center;
