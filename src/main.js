@@ -248,7 +248,7 @@ function renderHome() {
       <div class="wrap footer-inner">
         <div class="footer-left">
           <span class="footer-brand">Nymo · Support</span>
-          <span class="footer-authors">Anatolii Konovalov, Vsevolod Golobyn</span>
+          <span class="footer-authors">Anatolii Konovalov, Vsevolod Holobyn</span>
         </div>
         <div class="footer-mid">
           <button class="footer-lang" type="button" id="footerLangBtn">${escapeHtml(

@@ -105,4 +105,4 @@ npm run dev
 
 ## Автори
 
-Anatolii Konovalov, Vsevolod Golobyn
+Anatolii Konovalov, Vsevolod Holobyn
